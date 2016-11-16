@@ -6,6 +6,7 @@ public class Detector : MonoBehaviour
 
     List<GameObject> enterObElementTag;
     AutomaticMovement automaticMovement = null;
+    public string tag = "";
 
     void Awake()
     {
@@ -15,7 +16,7 @@ public class Detector : MonoBehaviour
 
     void OnTriggerEnter(Collider ob)
     {
-        if (ob.gameObject.tag == "Element")
+        if (ob.gameObject.tag == tag)
         {
             Debug.Log(ob.gameObject.name);
             enterObElementTag.Add(ob.gameObject);
@@ -24,7 +25,7 @@ public class Detector : MonoBehaviour
 
     void OnTriggerExit(Collider ob)
     {
-        if (ob.gameObject.tag == "Element")
+        if (ob.gameObject.tag == tag)
         {
             enterObElementTag.Remove(ob.gameObject);
         }
