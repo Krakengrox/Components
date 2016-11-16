@@ -2,16 +2,17 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class SpanwElements : Singleton<SpanwElements>
+public class SpanwElements : MonoBehaviour
 {
     Vector3 cubeSize;
-
-    protected override void Awake()
+    public Button spawnElement;
+    public string type = " ";
+    void Start()
     {
-        base.Awake();
+        spawnElement.onClick.AddListener(Generate);
     }
 
-    public void Generate(string type)
+    public void Generate()
     {
         cubeSize = (this.gameObject.GetComponent<Collider>().bounds.size * 0.5f);
         GameObject element = GameObject.Instantiate(Resources.Load(type)) as GameObject;
